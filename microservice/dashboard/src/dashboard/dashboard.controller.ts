@@ -1,16 +1,16 @@
 import { Controller } from '@nestjs/common'
-import { MessagePattern, Payload } from '@nestjs/microservices'
+import { MessagePattern } from '@nestjs/microservices'
 import { DashboardService } from './dashboard.service'
-import { CreateDashboardDto } from './dto/create-dashboard.dto'
 
 @Controller()
 export class DashboardController
 {
   constructor ( private readonly dashboardService: DashboardService ) { }
 
-  @MessagePattern( 'auth' )
-  dashboard ( @Payload() createDashboardDto: CreateDashboardDto )
+  @MessagePattern( { cmd: 'dashboard' } )
+  dashboard (data:any)
   {
-    return this.dashboardService.dashboard( createDashboardDto )
+    
+    return this.dashboardService.dashboard(data)
   }
 }

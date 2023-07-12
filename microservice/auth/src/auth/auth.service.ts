@@ -6,8 +6,14 @@ export class AuthService
 
   async auth ( data: any )
   {
+
     console.log( data )
-    return
+    console.log( 'user loged in successfully' )
+
+    return {
+      message: 'user loged in successfully',
+      data
+    }
   }
 
 }
